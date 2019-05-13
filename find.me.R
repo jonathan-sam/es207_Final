@@ -1,5 +1,7 @@
 find.me <- function(x, find, method = "max"){
-  if(method == "max"){
+  if(!is.vector(x[,find], mode = "numeric"))
+    stop("Object to be passed must be numeric")
+  else if(method == "max"){
     x[which.max(x[,find]),]
   }
   else if(method == "min"){
@@ -9,6 +11,6 @@ find.me <- function(x, find, method = "max"){
     x[x[,find]==median(x[,find]),]
   }
   else if(method == "mean"){
-    ifelse(dim(x[x[,find]==median(x[,find]),])[1]==0, x[x[,find]==median(x[,find]),], "There are no exact matches of data with the mean")
+    ifelse(dim(x[x[,find]==mean(x[,find]),])[1]==0, "There are no exact matches of data with the mean", x[x[,find]==mean(x[,find]),])
   }
 }

@@ -1,0 +1,26 @@
+###exploratory example
+
+## exploratory is a wrapper function for other exploratory data functions such as histograms and correlations. calling on exploratory will wrap multiple variables in a given dataframe and different methods can be defined by method = c("Histograms", "Time", "Correlation")
+
+x = dataframe/matrix/tibble
+y = variables in question either by name or column number
+method = "Histograms" or "Time" or "Correlation"
+
+#
+head(fire.sn.subset)
+exploratory(fire.sn.subset, c(119:121), method = "Histograms")
+exploratory(fire.sn.subset, c(119:121), method = "Time", Time = "FIRE_YEAR", Time.type = "year")
+exploratory(fire.sn.subset, c(119:121), method = "Correlation", cor.m = "kendall")
+
+###find.me example
+
+## find.me will return the row in which the testing variable fits the test. For example if we want to see which variable is the max of our dataset, the function will return the correspoing columns as well
+
+x = dataframe/matrix/tibble
+find = variable in question by column
+method = "max" or "min" or "median" or "mean"
+
+#
+head(fire.sn.subset)
+find.me(fire.sn.subset, find = "CLS2_ACRES", method = "max")
+find.me(fire.sn.subset, find = "CLS2_ACRES", method = "mean")
