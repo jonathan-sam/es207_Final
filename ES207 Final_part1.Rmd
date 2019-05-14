@@ -1,0 +1,26 @@
+---
+title: "ES 207 Final Part 1"
+output: html_notebook
+author: "Jonathan Sam"
+---
+
+##*This demonstration is intended for an example for ES 207 final, and it is not offical results
+
+```{r}
+#Sierra Nevada MTBS Fire Data and Climate data, truncated to only include severity, climate, and other indicators such as year and month
+head(sevclim.sn) #sev = severity, clim = climate, sn = sierra nevada
+dim(sevclim.sn)
+#Threshold in order from low to high respectively
+threshold
+#Covariate inputs into scale and shape parameters, in order from low to high respectively 
+scale.param
+shape.param
+
+library(texmex)
+#jas.migpd is an edited function from library texmex, function migpd. jas.migpd was edited to allow for covariate inputs, migpd is a wrapper for the function evm, which models extreme value models (hence evm) jas. in front of any texmex function was edited to allow for covarite input
+#?migpd
+# When using jas.migpd, the three fire severity classes (low, moderate, high) must be the first three columns in the dataset
+sn.GPDs <- jas.migpd(sevclim.sn, mth = threshold, sc = scale.param, sh = shape.param)
+sn.GPDs$models
+```
+
